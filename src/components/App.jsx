@@ -1,17 +1,17 @@
-export const App = () => {
+import Layout from './Layout/Layout';
+import { Routes, Route } from 'react-router-dom';
+
+const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        textTransform: 'uppercase',
-        color: '#010101',
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <Layout />
+      <Routes>
+        <Route path="/">{/* <HomePage /> */}</Route>
+        <Route path="/movies">{/* <MoviesPage /> */}</Route>
+        <Route path="/movies/:moviesId">{/* <MovieDetailsPage /> */}</Route>
+      </Routes>
+    </>
   );
 };
+
+export default App;
