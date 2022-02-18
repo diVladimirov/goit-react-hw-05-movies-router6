@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouteMatch, useLocation } from 'react-router-dom';
+import { useLocation, Outlet } from 'react-router-dom';
 import {
   SectionStyled,
   LinksWrapperStyled,
@@ -8,7 +8,6 @@ import {
 import { ButtonStyled } from 'components/Movies/Movies.styled';
 
 const MovieDetails = ({ film, onGoBack }) => {
-  const { url } = useRouteMatch();
   const location = useLocation();
 
   const {
@@ -59,7 +58,7 @@ const MovieDetails = ({ film, onGoBack }) => {
       <LinksWrapperStyled>
         <NavLinkStyled
           to={{
-            pathname: `${url}/cast`,
+            pathname: 'cast',
             state: { from: location?.state?.from },
           }}
         >
@@ -67,13 +66,14 @@ const MovieDetails = ({ film, onGoBack }) => {
         </NavLinkStyled>
         <NavLinkStyled
           to={{
-            pathname: `${url}/reviews `,
+            pathname: 'reviews ',
             state: { from: location?.state?.from },
           }}
         >
           Reviews
         </NavLinkStyled>
       </LinksWrapperStyled>
+      <Outlet />
     </SectionStyled>
   );
 };
