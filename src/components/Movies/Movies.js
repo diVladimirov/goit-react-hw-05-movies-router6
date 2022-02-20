@@ -1,15 +1,14 @@
 import React from 'react';
-import { Link, useRouteMatch, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FormStyled, InputStyled, ButtonStyled } from './Movies.styled';
 import { ListStyled } from 'components/Home/Home.styled';
 
-const Movies = ({ handleSubmit, moviesList }) => {
-  const { url } = useRouteMatch();
+const Movies = ({ onSubmit, moviesList }) => {
   const location = useLocation();
 
   return (
     <>
-      <FormStyled onSubmit={handleSubmit}>
+      <FormStyled onSubmit={onSubmit}>
         <InputStyled
           type="text"
           placeholder="Enter movie to find..."
@@ -22,12 +21,7 @@ const Movies = ({ handleSubmit, moviesList }) => {
           moviesList.map(
             ({ original_title, id, backdrop_path, title, poster_path }) => (
               <li key={id}>
-                <Link
-                  to={{
-                    pathname: `${url}/${id}`,
-                    state: { from: location },
-                  }}
-                >
+                <Link to={`/movies/${id}`} state={{ from: location }}>
                   <p>{original_title}</p>
                   {backdrop_path ? (
                     <img

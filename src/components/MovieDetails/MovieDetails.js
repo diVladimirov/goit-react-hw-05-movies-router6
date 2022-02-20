@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import {
   SectionStyled,
@@ -19,7 +18,10 @@ const MovieDetails = ({ film, onGoBack }) => {
     vote_average,
     genres,
     poster_path,
+    credits,
+    reviews,
   } = film;
+
   return (
     <SectionStyled>
       <ButtonStyled type="button" onClick={onGoBack}>
@@ -59,16 +61,16 @@ const MovieDetails = ({ film, onGoBack }) => {
         <NavLinkStyled
           to={{
             pathname: 'cast',
-            state: { from: location?.state?.from },
           }}
+          state={{ credits, from: location?.state?.from }}
         >
           Cast
         </NavLinkStyled>
         <NavLinkStyled
           to={{
             pathname: 'reviews ',
-            state: { from: location?.state?.from },
           }}
+          state={{ reviews, from: location?.state?.from }}
         >
           Reviews
         </NavLinkStyled>

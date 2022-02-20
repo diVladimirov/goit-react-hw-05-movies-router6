@@ -1,11 +1,17 @@
-import React from 'react';
+import { useLocation } from 'react-router-dom';
 
-const Reviews = ({ reviews }) => {
+const Reviews = () => {
+  const {
+    state: {
+      reviews: { results },
+    },
+  } = useLocation();
+
   return (
     <>
       <ul>
-        {reviews.results.length !== 0 ? (
-          reviews.results.map(({ id, author, content }) => (
+        {results.length !== 0 ? (
+          results.map(({ id, author, content }) => (
             <li key={id}>
               <p>{author}</p>
               <p>{content}</p>
